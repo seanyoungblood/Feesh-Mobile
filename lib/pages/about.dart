@@ -12,7 +12,7 @@ class AboutPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Text(
-                "This is a high-tech minimalist app designed for an intuitive user experience.",
+                "This app uses AI to help predict optimal fishing conditions.\n\nDirect questions to seanyoungblood@youngbloodswllc.xyz!",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),

@@ -11,11 +11,14 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => onPressed(),
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blueAccent,  // Updated parameter name
+        backgroundColor: Colors.white,  // Updated parameter name
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
-      child: Text(text),
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.blueAccent), // Blue accent text
+      ),
     );
   }
 }

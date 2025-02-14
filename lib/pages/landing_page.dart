@@ -9,7 +9,21 @@ class LandingPage extends StatelessWidget {
       body: Stack(
         children: [
           Center(
-            child: Text("Welcome to High-Tech App", style: Theme.of(context).textTheme.headlineLarge),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Feesh Finder",
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                SizedBox(height: 10), // Spacing between title and subtitle
+                Text(
+                  "The artificial intelligence fishing tool", // Additional text
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey[700]),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
           AppLogo(),
         ],
