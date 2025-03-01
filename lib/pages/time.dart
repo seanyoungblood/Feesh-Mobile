@@ -10,7 +10,13 @@ class Time extends StatefulWidget {
 
 class _PageOneState extends State<Time> {
   final TextEditingController textController = TextEditingController();
-  String dropdownValue = 'Option 1';
+  String dropdownValue1 = 'Select';
+  String dropdownValue2 = 'Select';
+  String dropdownValue3 = 'Select';
+  String dropdownValue4 = 'Select';
+  String dropdownValue5 = 'Select';
+  String dropdownValue6 = 'Select';
+  String dropdownValue7 = 'Select';
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +28,21 @@ class _PageOneState extends State<Time> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Page 1", style: Theme.of(context).textTheme.headlineLarge),
+                Text("Predict Time", style: Theme.of(context).textTheme.headlineLarge),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue1,
+                  items: ["Select", "Backcountry", "Beach", "Bridge", "Creek", "Docks", "Dropoff", "Flats", "Inlet",
+                  "Island", "Pass", "Pier", "Shoreline", "Spillway"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue1 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Spot",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -47,17 +54,18 @@ class _PageOneState extends State<Time> {
                 ),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue2,
+                  items: ["Select", "January", "February", "March", "April", "May",
+                    "June", "July", "August", "September", "October", "November", "December"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue2 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Month",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -72,7 +80,7 @@ class _PageOneState extends State<Time> {
                   controller: textController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Enter Text",
+                    labelText: "Water Temperature",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -84,17 +92,17 @@ class _PageOneState extends State<Time> {
                 ),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue3,
+                  items: ["Select", "Sunny", "Partly Sunny", "Partly Cloudy", "Cloudy", "Raining"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue3 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Sky Condition",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -106,17 +114,17 @@ class _PageOneState extends State<Time> {
                 ),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue4,
+                  items: ["Select", "N", "NE", "E", "SE", "S", "SW", "W", "NW"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue4 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Wind Direction",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -128,17 +136,17 @@ class _PageOneState extends State<Time> {
                 ),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue5,
+                  items: ["Select", "Low", "High", "N/A"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue5 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Tidal Level (optional)",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -150,17 +158,17 @@ class _PageOneState extends State<Time> {
                 ),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue6,
+                  items: ["Select", "Rising", "Falling", "Slack", "N/A"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue6 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Tidal Direction (optional)",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),
@@ -172,17 +180,17 @@ class _PageOneState extends State<Time> {
                 ),
                 SizedBox(height: 20),
                 DropdownButtonFormField<String>(
-                  value: dropdownValue,
-                  items: ["Option 1", "Option 2", "Option 3"]
+                  value: dropdownValue7,
+                  items: ["Select", "Clear", "Stained", "Murky"]
                       .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Colors.blueAccent))))
                       .toList(),
                   onChanged: (value) {
-                    setState(() => dropdownValue = value!);
+                    setState(() => dropdownValue7 = value!);
                   },
                   dropdownColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: "Select Option",
+                    labelText: "Water Color",
                     labelStyle: TextStyle(color: Colors.blueAccent),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blueAccent),

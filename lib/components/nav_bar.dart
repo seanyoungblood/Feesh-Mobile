@@ -8,6 +8,8 @@ class NavBar extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: customWarmGrey,
       type: BottomNavigationBarType.fixed,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.input), label: 'Spot'),
