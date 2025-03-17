@@ -12,7 +12,10 @@ class AboutPage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Text(
-                "This app uses AI to help predict optimal fishing conditions.\n\nDirect questions to seanyoungblood@youngbloodswllc.xyz!",
+                "This app uses AI to help predict optimal fishing conditions."
+                    "\n\nThe artificial intelligence that this app uses was trained with years of REAL "
+                    "fishing data from Florida inshore anglers."
+                    "\n\nDirect questions to seanyoungblood@youngbloodswllc.xyz!",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
