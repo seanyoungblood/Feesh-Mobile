@@ -15,7 +15,8 @@ class AboutPage extends StatelessWidget {
                 "This app uses AI to help predict optimal fishing conditions."
                     "\n\nThe artificial intelligence that this app uses was trained with years of REAL "
                     "fishing data from Florida inshore anglers."
-                    "\n\nDirect questions to seanyoungblood@youngbloodswllc.xyz!",
+                    "\n\nRelease Notes:"
+                    "\n1.0.0 - initial release",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),

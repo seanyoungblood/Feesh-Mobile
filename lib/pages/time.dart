@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../components/app_logo.dart';
 import '../components/nav_bar.dart';
 import '../widgets/custom_button.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../utils/mappings.dart';
 
 class Time extends StatefulWidget {
   @override
@@ -17,11 +20,49 @@ class _PageOneState extends State<Time> {
   String dropdownValue5 = 'Select';
   String dropdownValue6 = 'Select';
   String dropdownValue7 = 'Select';
+  List<dynamic>? response;
+
+  Future<void> predictTime() async {
+    final url = Uri.parse('https://feeshflaskdocker.onrender.com/predictTime');
+
+    final mappedData = {
+      'spot': dropdownValue1,
+      'month': monthMapping[dropdownValue2] ?? dropdownValue2,
+      'wtemp': textController.text,
+      'sky': skyMapping[dropdownValue3] ?? dropdownValue3,
+      'windd': windDirectionMapping[dropdownValue4] ?? dropdownValue4,
+      'level': tideLevelMapping[dropdownValue5] ?? dropdownValue5,
+      'dir': tideDirectionMapping[dropdownValue6] ?? dropdownValue6,
+      'color': waterColorMapping[dropdownValue7] ?? dropdownValue7
+    };
+
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(mappedData),
+    );
+
+    if (response.statusCode == 200) {
+      final decodedResponse = jsonDecode(response.body);
+      if (decodedResponse.containsKey("error")) {
+        setState(() {
+          this.response = ["Error: Ensure all values are valid and present!"];
+        });
+      } else {
+        setState(() {
+          this.response = decodedResponse['result']; // Ensure this key exists
+        });
+      }
+
+    } else {
+      print('Error: ${response.statusCode} - ${response.body}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: ListView(
         children: [
           Padding(
             padding: EdgeInsets.all(20),
@@ -203,11 +244,36 @@ class _PageOneState extends State<Time> {
                 SizedBox(height: 20),
                 CustomButton(
                   text: "Submit",
-                  onPressed: () {
-                    // Do something
-                  },
+                  onPressed:predictTime,
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 5),
+                if (response != null) ...[
+                  SizedBox(height: 20),
+                  Text(
+                    "Prediction Results:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Column(
+                    children: response!.map((res) {
+                      List<String> parts = res.split(" "); // Split "ArtiShrimp 0.99374863"
+                      if (parts.length == 2) {
+                        String timeCode = parts[0]; // "ArtiShrimp"
+                        double confidence = double.tryParse(parts[1]) ?? 0.0; // 0.99374863
+
+                        // Convert time code to user-friendly name
+                        String timeName = timeMapping[timeCode] ?? timeCode;
+                        String confidenceStr = (confidence * 100).toStringAsFixed(0); // "99%"
+
+                        return Text(
+                          "$timeName - $confidenceStr% confidence",
+                          style: TextStyle(fontSize: 16),
+                        );
+                      }
+                      return Text(res, style: TextStyle(fontSize: 16)); // Fallback if parsing fails
+                    }).toList(),
+                  ),
+                ]
               ],
             ),
           ),
